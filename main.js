@@ -90,6 +90,15 @@ button5.addEventListener("click", (event) => {document.getElementById("p5").clas
 // Event Bubbling. You should stop the
 // event propagation.
 
+const button6 = document.getElementById("button6");
+button6.addEventListener(
+    "click", 
+    (event) => {
+    event.stopPropagation();
+    document.getElementById("p6").textContent = "Event Bubbling. Stopping propagation.";
+}, 
+true
+);
 
 // 7) Provide a function named "addToSessionStorage"
 // that accepts two parameters:
@@ -104,6 +113,9 @@ button5.addEventListener("click", (event) => {document.getElementById("p5").clas
 // Hint: Use JSON methods on these storage problems.
 /////
 
+function addToSessionStorage(storeName, objName) {
+    sessionStorage.setItem(storeName, JSON.stringify(objName));
+}
 
 // 8) Provide a function named getFromSessionStorage
 // that will retrieve the object you put in
@@ -111,8 +123,15 @@ button5.addEventListener("click", (event) => {document.getElementById("p5").clas
 // Your function should accept a "storeName"
 // parameter and return the object it retrieves.
 
+function getFromSessionStorage(storeName) {
+    return JSON.parse(sessionStorage.getItem(storeName));
+}
 
 // 9) Provide a function emptyWebStorage
 // that will remove all entries from local
 // storage and session storage.
 
+function emptyWebStorage() {
+    localStorage.clear();
+    sessionStorage.clear();
+}
